@@ -9,13 +9,14 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by xinmei0016 on 16/10/25.
+ * add data
  */
 public class AddPanel extends JPanel {
     JTextField name, tel;
     JLabel notice, nameLabel, telLabel;
     JButton addButton;
-    MetaData[] dataHashedByName, dataHashedByTel;
-    int type;
+    MetaData[] dataHashedByName, dataHashedByTel;   //two arrays to store data
+    int type;             //the type we choose to handle hash collision
 
     public AddPanel() {
 
@@ -66,6 +67,7 @@ public class AddPanel extends JPanel {
             String tel_ = tel.getText();
             MetaData.putData(type, name_, name_, tel_, dataHashedByName);
             MetaData.putData(type, tel_, name_, tel_, dataHashedByTel);
+            JOptionPane.showMessageDialog(null, "add ok!", "log", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

@@ -7,6 +7,7 @@ import java.util.SimpleTimeZone;
  * Created by xinmei0016 on 16/10/26.
  */
 
+//meta data class, contain four useful static function (add, delete, update, search)
 public class MetaData {
     public String name, tel;
     public MetaData next;

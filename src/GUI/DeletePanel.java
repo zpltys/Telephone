@@ -15,7 +15,7 @@ public class DeletePanel extends JPanel {
     JTextField srcName, srcTel;
     JButton delete;
     MetaData[] dataHashedByName, dataHashedByTel;
-    int type;
+    int type;                //the type we choose to handle hash collision
 
     public DeletePanel() {
         notice = new JLabel("if one of origin data is empty, we think it is wildcard");
@@ -77,12 +77,15 @@ public class DeletePanel extends JPanel {
                     temp = MetaData.searchData(type, oName, oName, oTel, dataHashedByName, updateType);
                 }
 
+                int count = 0;
                 while (temp != null) {
               //      System.out.println("zs-log: name:" + temp.name + " tel:" + temp.tel);
                     MetaData.deleteData(type, temp.name, temp.name, temp.tel, dataHashedByName);
                     MetaData.deleteData(type, temp.tel, temp.name, temp.tel, dataHashedByTel);
                     temp = temp.next;
+                    count++;
                 }
+                JOptionPane.showMessageDialog(null, "delete " + count + " records ok!", "log", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }

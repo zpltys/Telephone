@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+// a tool class to make data persist and load user's data
 public class LoadDataFromFile {
     static String user;
 

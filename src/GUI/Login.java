@@ -2,6 +2,8 @@ package GUI;
 
 /**
  * Created by zpltys on 16/10/24.
+ * The GUI of login
+ * start of the project
  */
 
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.*;
 import java.util.*;
+import java.io.File;
 
 import tools.LoadDataFromFile;
 import tools.Md5;
@@ -21,12 +24,17 @@ public class Login extends JFrame {
     private String FileName = "UserInfo";
 
     private JPanel namePanel, pwdPanel, buttonPanel;
-    private JTextField name;
-    private JPasswordField password;
+    private JTextField name;            //text field to type user name
+    private JPasswordField password;    //password field
     private JLabel nameLabel, pwdLabel;
-    private JButton login, register;
+    private JButton login, register;    //you can login or even register
 
-    private int type = 2;
+    private int type = 2;               //the type we choose for hash collision, 1 is Open addressing strategy and 2 means Dynamic resizing
+
+    //clear the password
+    public void clearPwd() {
+        password.setText("");
+    }
 
     public Login() {
         namePanel = new JPanel();
@@ -68,6 +76,10 @@ public class Login extends JFrame {
         //锁定窗体
         this.setResizable(false);
     }
+
+    /*
+     * Verify the password for the account, return if the password is matched
+     */
 
     private Boolean vaildPwd (String user, String password) throws Exception {
         BufferedReader reader = null;
@@ -112,6 +124,13 @@ public class Login extends JFrame {
             if(isMatch) {
                 Menu menu = new Menu();
                 LoadDataFromFile.setUser(user);
+
+                try {
+                    File file = new File(".data/" + user);
+                    if (!file.exists()) file.createNewFile();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
 
                 Login.this.setVisible(false);
                 menu.dataHashedByName = LoadDataFromFile.loadDateHashedByName(type);

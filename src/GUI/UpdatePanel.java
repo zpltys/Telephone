@@ -15,6 +15,7 @@ public class UpdatePanel extends JPanel {
     MetaData[] dataHashedByName, dataHashedByTel;
     int type;
 
+    //更新面板
     public UpdatePanel() {
         notice = new JLabel("if one of origin data is empty, we think it is wildcard");
         name = new JLabel("     name                 ");
@@ -98,13 +99,16 @@ public class UpdatePanel extends JPanel {
                     temp = MetaData.searchData(type, oName, oName, oTel, dataHashedByName, updateType);
                 }
 
+                int count = 0;
                 while (temp != null) {
                     if(missName) dName = temp.name;
                     if(missTel) dTel = temp.tel;
                     MetaData.updateData(type, temp.name, dName, temp.name, temp.tel, dName, dTel, dataHashedByName);
                     MetaData.updateData(type, temp.tel, dTel, temp.name, temp.tel, dName, dTel, dataHashedByTel);
                     temp = temp.next;
+                    count++;
                 }
+                JOptionPane.showMessageDialog(null, "update " + count + " records ok", "log", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }

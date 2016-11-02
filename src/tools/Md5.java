@@ -14,11 +14,8 @@ public class Md5 {
     private static final String HEX_NUMS_STR="0123456789ABCDEF";
     private static final Integer SALT_LENGTH = 12;
 
-    /**
-     * 将16进制字符串转换成字节数组
-     * @param hex
-     * @return
-     */
+
+    //将16进制字符串转换成字节数组
     public static byte[] hexStringToByte(String hex) {
         int len = (hex.length() / 2);
         byte[] result = new byte[len];
@@ -31,11 +28,7 @@ public class Md5 {
     }
 
 
-    /**
-     * 将指定byte数组转换成16进制字符串
-     * @param b
-     * @return
-     */
+    //将指定byte数组转换成16进制字符串
     public static String byteToHexString(byte[] b) {
         StringBuffer hexString = new StringBuffer();
         for (int i = 0; i < b.length; i++) {
@@ -48,12 +41,8 @@ public class Md5 {
         return hexString.toString();
     }
 
-    /**
-     * 验证口令是否合法
-     * @param password
-     * @param passwordInDb
-     * @return
-     */
+
+    //验证口令是否合法
     public static boolean validPassword(String password, String passwordInDb) {
 
         byte[] pwdInDb = hexStringToByte(passwordInDb);
@@ -87,13 +76,8 @@ public class Md5 {
     }
 
 
-    /**
-     * 获得加密后的16进制形式口令
-     * @param password
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws UnsupportedEncodingException
-     */
+
+    //获得加密后的16进制形式口令
     public static String getEncryptedPwd(String password)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         //声明加密后的口令数组变量

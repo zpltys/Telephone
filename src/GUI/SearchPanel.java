@@ -17,6 +17,8 @@ public class SearchPanel extends JPanel {
     MetaData[] dataHashedByName, dataHashedByTel;
     int type;
 
+
+    //搜索面板，将搜索的成果以文本框的形势返回
     public SearchPanel() {
         notice = new JLabel("if one of origin data is empty, we think it is wildcard");
         name = new JLabel("     name                 ");

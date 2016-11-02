@@ -11,11 +11,15 @@ import java.io.FileWriter;
 import java.util.*;
 import java.applet.Applet;
 
+/*
+ * the menu window for controlling all functions
+ */
+
 public class Menu extends JFrame {
 
-    Login login;
-    MetaData[] dataHashedByName, dataHashedByTel;
-    int type;
+    Login login;    //for callback
+    MetaData[] dataHashedByName, dataHashedByTel;   // two meta data hashed by name and telephone
+    int type;       //the same mean as in Login and initialed by Login
 
     protected void makeJpanel(JPanel jPanel, GridBagLayout gridbag, GridBagConstraints c) {
         gridbag.setConstraints(jPanel, c);
@@ -56,6 +60,7 @@ public class Menu extends JFrame {
         Menu ex1 = new Menu();
     }
 
+    //左边的控制栏
     class MenuBar extends JPanel {
         private void addContain(JButton b) {
             JPanel jP = new JPanel();
@@ -108,6 +113,7 @@ public class Menu extends JFrame {
         }
     }
 
+    //右边的功能区
     class MutiView extends JPanel {
         public CardLayout card;
 
@@ -125,6 +131,7 @@ public class Menu extends JFrame {
     }
 }
 
+//功能区的按键监听
 class MutiActionListener {
     Menu.MutiView mutiView;
 
@@ -159,6 +166,7 @@ class SearchActionListener extends MutiActionListener implements ActionListener 
 }
 
 
+//关闭按钮的监听
 class CloseActionListener implements ActionListener {
     Menu m;
 
@@ -171,6 +179,7 @@ class CloseActionListener implements ActionListener {
         LoadDataFromFile.pushDateIntoFile(m.dataHashedByName);
         m.dispose();
         m.login.setVisible(true);
+        m.login.clearPwd();
     }
 }
 

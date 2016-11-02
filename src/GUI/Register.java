@@ -8,6 +8,8 @@ import java.io.FileWriter;
 
 import tools.Md5;
 
+
+//注册界面
 public class Register extends JFrame {
     private String fileName;
     private JFrame login;

@@ -1,8 +1,9 @@
 package tools;
 
 public class Hash {
-    final static int mod = 11003;
+    final static int mod = 11003;         //the mode for hash
 
+    // hash function to transfer string to int
     public static int hash(String str) {
         char[] s = str.toCharArray();
         int ans = 0;
